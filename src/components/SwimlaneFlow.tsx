@@ -46,7 +46,7 @@ export const SwimlaneFlow: React.FC = () => {
 
   const getArrowColor = (colIndex: number) => {
     if (colIndex < currentStage) return '#10b981'; // Green for complete
-    if (colIndex === currentStage) return '#7c3aed'; // Violet for active
+    if (colIndex === currentStage) return '#3b82f6'; // Blue for active
     return 'var(--border-color)'; // Muted gray
   };
 
@@ -94,18 +94,18 @@ export const SwimlaneFlow: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '120px repeat(7, 1fr)', gap: '16px', alignItems: 'center' }}>
           {/* Row label */}
           <div style={{ 
-            backgroundColor: 'rgba(124, 58, 237, 0.08)',
-            border: '1px solid rgba(124, 58, 237, 0.15)',
+            backgroundColor: '#f3f4f6',
+            border: '1px solid var(--border-color)',
             borderRadius: '8px',
             padding: '12px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            color: '#fff',
+            color: 'var(--text-primary)',
             fontWeight: 600,
             fontSize: '13px'
           }}>
-            <Home style={{ width: '16px', height: '16px', color: '#a78bfa' }} />
+            <Home style={{ width: '16px', height: '16px', color: '#3b82f6' }} />
             <span>AGENCY</span>
           </div>
 
@@ -185,18 +185,18 @@ export const SwimlaneFlow: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '120px repeat(7, 1fr)', gap: '16px', alignItems: 'center' }}>
           {/* Row label */}
           <div style={{ 
-            backgroundColor: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.15)',
+            backgroundColor: '#f3f4f6',
+            border: '1px solid var(--border-color)',
             borderRadius: '8px',
             padding: '12px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            color: '#fff',
+            color: 'var(--text-primary)',
             fontWeight: 600,
             fontSize: '13px'
           }}>
-            <User style={{ width: '16px', height: '16px', color: '#34d399' }} />
+            <User style={{ width: '16px', height: '16px', color: '#10b981' }} />
             <span>CLIENT</span>
           </div>
 

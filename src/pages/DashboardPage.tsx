@@ -44,10 +44,10 @@ export const DashboardView: React.FC = () => {
       <div className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'var(--bg-glass)' }}>
         <div>
           <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 700 }}>
-            Project: <span style={{ color: '#a78bfa' }}>Sortd Corporate Rebrand</span>
+            Project: <span style={{ color: '#3b82f6' }}>Sortd Corporate Rebrand</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '4px' }}>
-            Agency: Jenkins Design Studio | Value: $45,000 | Active Step: <strong style={{ color: '#fff' }}>Step {currentStage + 1} ({workflowSteps[currentStage].title})</strong>
+            Agency: Jenkins Design Studio | Value: $45,000 | Active Step: <strong style={{ color: 'var(--text-primary)' }}>Step {currentStage + 1} ({workflowSteps[currentStage].title})</strong>
           </p>
         </div>
         
@@ -70,7 +70,7 @@ export const DashboardView: React.FC = () => {
         {/* Left Side: Contextual Simulation Action Panel */}
         <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Sparkles style={{ width: '18px', height: '18px', color: '#a78bfa' }} />
+            <Sparkles style={{ width: '18px', height: '18px', color: '#a855f7' }} />
             Demo Simulation Controller ({role === 'agent' ? 'Agency Mode' : 'Client Mode'})
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>
@@ -253,20 +253,20 @@ export const DashboardView: React.FC = () => {
         {/* Right Side: Activity log timeline */}
         <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
           <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Clock style={{ width: '18px', height: '18px', color: '#a78bfa' }} />
+            <Clock style={{ width: '18px', height: '18px', color: '#f59e0b' }} />
             Recent Activity Log
           </h3>
           <div className="activity-list" style={{ maxHeight: '250px', overflowY: 'auto' }}>
             {activities.map((act) => {
-              let iconColor = 'rgba(124, 58, 237, 0.15)';
-              let textColor = '#a78bfa';
+              let iconColor = 'rgba(59, 130, 246, 0.08)';
+              let textColor = '#3b82f6';
               
               if (act.type === 'client') {
-                iconColor = 'rgba(16, 185, 129, 0.15)';
-                textColor = '#34d399';
+                iconColor = 'rgba(16, 185, 129, 0.08)';
+                textColor = '#10b981';
               } else if (act.type === 'system') {
-                iconColor = 'rgba(6, 182, 212, 0.15)';
-                textColor = '#22d3ee';
+                iconColor = 'rgba(14, 165, 233, 0.08)';
+                textColor = '#0ea5e9';
               }
 
               return (

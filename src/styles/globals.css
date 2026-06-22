@@ -1,34 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors */
-  --bg-primary: #0a0d14;
-  --bg-secondary: #111522;
-  --bg-tertiary: #161c2e;
-  --bg-glass: rgba(17, 21, 34, 0.7);
-  --bg-glass-hover: rgba(22, 28, 46, 0.85);
+  /* Colors - Clean Bright Light Theme matching landing page */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-glass-hover: rgba(249, 250, 251, 0.95);
   
-  --border-color: rgba(255, 255, 255, 0.07);
-  --border-color-hover: rgba(255, 255, 255, 0.15);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-hover: rgba(0, 0, 0, 0.15);
   
-  --accent-primary: #7c3aed; /* violet */
-  --accent-secondary: #4f46e5; /* indigo */
-  --accent-glow: rgba(124, 58, 237, 0.35);
-  --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  --accent-primary: #000000;
+  --accent-secondary: #1f2937;
+  --accent-glow: rgba(0, 0, 0, 0.03);
+  --accent-gradient: linear-gradient(135deg, #111827 0%, #000000 100%);
   
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
   
   /* Status Colors */
   --color-success: #10b981;
-  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-success-bg: rgba(16, 185, 129, 0.08);
   --color-warning: #f59e0b;
-  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-warning-bg: rgba(245, 158, 11, 0.08);
   --color-danger: #ef4444;
-  --color-danger-bg: rgba(239, 68, 68, 0.1);
-  --color-info: #06b6d4;
-  --color-info-bg: rgba(6, 182, 212, 0.1);
+  --color-danger-bg: rgba(239, 68, 68, 0.08);
+  --color-info: #0ea5e9;
+  --color-info-bg: rgba(14, 165, 233, 0.08);
 
   /* Fonts */
   --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
@@ -82,10 +82,9 @@ body {
 .app-container {
   display: flex;
   min-height: 100vh;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(79, 70, 229, 0.08) 0px, transparent 50%);
-  background-attachment: fixed;
+  background-color: #ffffff;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
 /* Sidebar navigation */
@@ -132,9 +131,7 @@ body {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  background: linear-gradient(120deg, #fff 40%, var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
 }
 
 .nav-links {
