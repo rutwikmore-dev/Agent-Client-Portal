@@ -1,12 +1,12 @@
 import React from 'react';
 import { usePortal } from '../context/PortalContext';
-import { SwimlaneFlow } from '../components/SwimlaneFlow';
 import { 
   CheckCircle2, 
   Clock, 
   RotateCcw,
   Sparkles,
   ArrowRight,
+  ArrowLeft,
   TrendingUp,
   FileText
 } from 'lucide-react';
@@ -61,8 +61,168 @@ export const DashboardView: React.FC = () => {
         </button>
       </div>
 
-      {/* 2. Interactive Swimlane Flow Graph */}
-      <SwimlaneFlow />
+      {/* 1. Key Metrics Row */}
+      <div className="metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+        {/* Metric 1: Active Deliverables */}
+        <div className="card metric-card" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 20px' }}>
+          <div className="metric-icon-box" style={{ backgroundColor: 'rgba(59, 130, 246, 0.08)', color: '#3b82f6', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <FileText style={{ width: '20px', height: '20px' }} />
+          </div>
+          <div className="metric-details">
+            <h3 style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'none', fontWeight: 600 }}>Active Deliverables</h3>
+            <div className="metric-value" style={{ fontSize: '20px', fontWeight: 700 }}>{currentStage >= 3 ? (currentStage >= 5 ? 2 : 1) : 0} Files</div>
+          </div>
+        </div>
+
+        {/* Metric 2: Pending Approvals */}
+        <div className="card metric-card" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 20px' }}>
+          <div className="metric-icon-box" style={{ backgroundColor: 'rgba(245, 158, 11, 0.08)', color: '#f59e0b', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Clock style={{ width: '20px', height: '20px' }} />
+          </div>
+          <div className="metric-details">
+            <h3 style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'none', fontWeight: 600 }}>Pending Approvals</h3>
+            <div className="metric-value" style={{ fontSize: '20px', fontWeight: 700 }}>{currentStage === 3 || currentStage === 5 ? 1 : 0} Items</div>
+          </div>
+        </div>
+
+        {/* Metric 3: Assets Collected */}
+        <div className="card metric-card" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 20px' }}>
+          <div className="metric-icon-box" style={{ backgroundColor: 'rgba(16, 185, 129, 0.08)', color: '#10b981', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <CheckCircle2 style={{ width: '20px', height: '20px' }} />
+          </div>
+          <div className="metric-details">
+            <h3 style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'none', fontWeight: 600 }}>Assets Collected</h3>
+            <div className="metric-value" style={{ fontSize: '20px', fontWeight: 700 }}>{currentStage >= 3 ? '4 / 4' : '0 / 4'} Uploaded</div>
+          </div>
+        </div>
+
+        {/* Metric 4: Stage Progress */}
+        <div className="card metric-card" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 20px' }}>
+          <div className="metric-icon-box" style={{ backgroundColor: 'rgba(168, 85, 247, 0.08)', color: '#a855f7', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Sparkles style={{ width: '20px', height: '20px' }} />
+          </div>
+          <div className="metric-details">
+            <h3 style={{ fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'none', fontWeight: 600 }}>Current Phase</h3>
+            <div className="metric-value" style={{ fontSize: '18px', fontWeight: 700 }}>Step {currentStage + 1} of 7</div>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Active Deliverables List (Replacer of SwimlaneFlow) */}
+      <div className="card">
+        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', fontWeight: 600, marginBottom: '16px' }}>
+          Active Project Deliverables & Sign-offs
+        </h3>
+        
+        {currentStage < 3 ? (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 20px', border: '1px dashed var(--border-color)', borderRadius: '8px', color: 'var(--text-secondary)', gap: '12px' }}>
+            <FileText style={{ width: '36px', height: '36px', color: 'var(--text-muted)' }} />
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>No deliverables shared yet</p>
+              <p style={{ fontSize: '12px', marginTop: '4px' }}>Once the project is initialized and client uploads branding assets, the agency will submit drafts for review.</p>
+            </div>
+            <span style={{ fontSize: '11px', backgroundColor: 'var(--bg-tertiary)', padding: '4px 10px', borderRadius: '4px', color: 'var(--text-secondary)' }}>
+              Simulate actions in Step 1 to Step 3 below to proceed
+            </span>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            
+            {/* Deliverable Item 1 */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 20px', border: '1px solid var(--border-color)', borderRadius: '8px', backgroundColor: 'var(--bg-secondary)', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: '250px' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '6px', backgroundColor: '#fee2e2', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>PDF</div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)' }}>Brand_Identity_Guidelines_V1.pdf</span>
+                  <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>Size: 4.8 MB | Shared by Jenkins Studio</span>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span style={{ fontSize: '12px', padding: '3px 8px', borderRadius: '12px', backgroundColor: 'var(--color-success-bg)', color: 'var(--color-success)', fontWeight: 600 }}>
+                  ✓ Approved
+                </span>
+                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Signed off by Rutwik More</span>
+              </div>
+            </div>
+
+            {/* Deliverable Item 2 (Dynamic based on currentStage) */}
+            {currentStage >= 3 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 20px', border: '1px solid var(--border-color)', borderRadius: '8px', backgroundColor: 'var(--bg-secondary)', flexWrap: 'wrap', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: '250px' }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '6px', backgroundColor: '#e0f2fe', color: '#0284c7', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>FIG</div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)' }}>
+                      {currentStage >= 5 ? 'Website_Homepage_Concept_V3_Final.figma' : 'Website_Homepage_Concept_V2.figma'}
+                    </span>
+                    <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
+                      {currentStage >= 5 ? 'Size: 12.4 MB | Revised by Sarah Jenkins' : 'Size: 11.2 MB | Shared by Sarah Jenkins'}
+                    </span>
+                  </div>
+                </div>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  {currentStage === 3 && (
+                    <>
+                      <span style={{ fontSize: '12px', padding: '3px 8px', borderRadius: '12px', backgroundColor: 'var(--color-warning-bg)', color: 'var(--color-warning)', fontWeight: 600 }}>
+                        ● Pending Approval
+                      </span>
+                      {role === 'client' ? (
+                        <button 
+                          className="action-btn"
+                          style={{ padding: '6px 12px', fontSize: '11px', backgroundColor: '#000000', color: '#ffffff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                          onClick={() => handleSimulateAction('Client approved Website Concept V2 and requested production handoff.', 'client')}
+                        >
+                          Sign & Approve
+                        </button>
+                      ) : (
+                        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Awaiting client sign-off</span>
+                      )}
+                    </>
+                  )}
+
+                  {currentStage === 4 && (
+                    <>
+                      <span style={{ fontSize: '12px', padding: '3px 8px', borderRadius: '12px', backgroundColor: 'var(--color-danger-bg)', color: 'var(--color-danger)', fontWeight: 600 }}>
+                        ● Changes Requested
+                      </span>
+                      <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>Feedback: "Warmer pastel color palettes requested"</span>
+                    </>
+                  )}
+
+                  {currentStage === 5 && (
+                    <>
+                      <span style={{ fontSize: '12px', padding: '3px 8px', borderRadius: '12px', backgroundColor: 'var(--color-warning-bg)', color: 'var(--color-warning)', fontWeight: 600 }}>
+                        ● Re-submitted
+                      </span>
+                      {role === 'client' ? (
+                        <button 
+                          className="action-btn"
+                          style={{ padding: '6px 12px', fontSize: '11px', backgroundColor: '#000000', color: '#ffffff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                          onClick={() => handleSimulateAction('Client approved Website Concept V3 Final deliverables.', 'client')}
+                        >
+                          Sign & Approve Final
+                        </button>
+                      ) : (
+                        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Awaiting client sign-off</span>
+                      )}
+                    </>
+                  )}
+
+                  {currentStage >= 6 && (
+                    <>
+                      <span style={{ fontSize: '12px', padding: '3px 8px', borderRadius: '12px', backgroundColor: 'var(--color-success-bg)', color: 'var(--color-success)', fontWeight: 600 }}>
+                        ✓ Approved
+                      </span>
+                      <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Fully signed off & archive ready</span>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+            
+          </div>
+        )}
+      </div>
 
       {/* 3. Bottom Grid: Simulation Controller and Activity logs */}
       <div className="dashboard-grid">
@@ -231,21 +391,23 @@ export const DashboardView: React.FC = () => {
           </div>
 
           {/* Explicit override step advance/revert buttons */}
-          <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <button 
               className="action-btn"
               disabled={currentStage === 0}
               onClick={revertStage}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
             >
-              ◄ Revert Step
+              <ArrowLeft style={{ width: '14px', height: '14px' }} /> Revert Step
             </button>
             
             <button 
               className="action-btn"
               disabled={currentStage === 6}
               onClick={advanceStage}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
             >
-              Advance Step ►
+              Advance Step <ArrowRight style={{ width: '14px', height: '14px' }} />
             </button>
           </div>
         </div>
