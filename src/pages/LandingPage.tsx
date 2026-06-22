@@ -142,7 +142,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
                       {/* Active Approvals Mockup Card */}
                       <div className="lp-mockup-card" style={{ padding: '12px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                          <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px' }}>Active Approval</span>
+                          <span style={{ fontSize: '11px', fontWeight: 700, color: '#4b5563', letterSpacing: '0.2px' }}>Active Approval</span>
                           <span style={{ fontSize: '9px', padding: '1px 5px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#b91c1c', fontWeight: 600 }}>Needs Review</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px', backgroundColor: '#f9fafb', borderRadius: '6px', border: '1px solid #f3f4f6', marginBottom: '8px' }}>
@@ -171,14 +171,14 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
                       {/* Timeline / Stepper Card */}
                       <div className="lp-mockup-card" style={{ padding: '12px' }}>
-                        <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px', display: 'block', marginBottom: '10px' }}>Project Phase</span>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#4b5563', letterSpacing: '0.2px', display: 'block', marginBottom: '10px' }}>Project Phase</span>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#10b981', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px' }}>✓</div>
                             <span style={{ fontSize: '11px', color: '#111827', textDecoration: 'line-through' }}>Phase 1: Briefing & Strategy</span>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#6366f1', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', fontSize: '8px', fontWeight: 'bold' }}>•</div>
+                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#3b82f6', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', fontSize: '8px', fontWeight: 'bold' }}>•</div>
                             <span style={{ fontSize: '11px', color: '#111827', fontWeight: 600 }}>Phase 2: Brand Concepts (Active)</span>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -195,13 +195,13 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
                       
                       {/* Live Feedback Streams Card */}
                       <div className="lp-mockup-card" style={{ padding: '12px', display: 'flex', flexDirection: 'column', height: '100%', minHeight: '190px' }}>
-                        <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px', display: 'block', marginBottom: '8px' }}>Live Feedback</span>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#4b5563', letterSpacing: '0.2px', display: 'block', marginBottom: '8px' }}>Live Feedback</span>
                         
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '110px', overflowY: 'auto', marginBottom: '8px', paddingRight: '2px' }}>
                           {demoChatHistory.map((chat, idx) => (
                             <div key={idx} style={{ 
                               alignSelf: chat.sender === 'client' ? 'flex-start' : 'flex-end',
-                              backgroundColor: chat.sender === 'client' ? '#f3f4f6' : '#6366f1',
+                              backgroundColor: chat.sender === 'client' ? '#f3f4f6' : '#111827',
                               color: chat.sender === 'client' ? '#111827' : '#ffffff',
                               padding: '5px 8px',
                               borderRadius: '6px',
@@ -222,7 +222,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
                             value={demoChatInput}
                             onChange={(e) => setDemoChatInput(e.target.value)}
                           />
-                          <button type="submit" style={{ background: 'none', border: 'none', color: '#6366f1', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '0 4px' }}>
+                          <button type="submit" style={{ background: 'none', border: 'none', color: '#3b82f6', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '0 4px' }}>
                             <Send style={{ width: '12px', height: '12px' }} />
                           </button>
                         </form>
@@ -230,7 +230,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
                       {/* Quick Asset List Card */}
                       <div className="lp-mockup-card" style={{ padding: '12px' }}>
-                        <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>Shared Assets</span>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#4b5563', letterSpacing: '0.2px', display: 'block', marginBottom: '6px' }}>Shared Assets</span>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                           <span style={{ fontSize: '9px', padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fff', border: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '3px', fontWeight: 550, color: '#374151' }}>
                             <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>AI</span> logo_final.ai
@@ -309,7 +309,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
       <section id="features" className="lp-section">
         <div className="lp-container">
           <div className="lp-section-header">
-            <div className="lp-badge">FEATURES WE INCLUDED</div>
+            <div className="lp-badge">Features Included</div>
             <h2>Everything you need to stay sorted</h2>
             <p>
               Sortd provides ten integrated features tailored to creative collaboration, design feedback, and transaction milestone transparency.
@@ -319,7 +319,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
           <div className="lp-features-grid">
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <LayoutDashboard style={{ width: '22px', height: '22px', color: '#6366f1' }} />
+                <LayoutDashboard style={{ width: '22px', height: '22px', color: '#3b82f6' }} />
               </div>
               <h3>Dashboard</h3>
               <p>
@@ -424,7 +424,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
       <section id="how-it-works" className="lp-section lp-section-alt">
         <div className="lp-container">
           <div className="lp-section-header">
-            <div className="lp-badge">HOW SORTD WORKS (FLOW)</div>
+            <div className="lp-badge">How Sortd Works</div>
             <h2>A seamless collaboration flow</h2>
             <p>
               How Sortd connects agencies and clients together from start to finish.
