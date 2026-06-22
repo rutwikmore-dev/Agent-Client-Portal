@@ -24,7 +24,6 @@ interface LandingViewProps {
 export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
   // Mock interactive state for hero visual
   const [heroApprovalSigned, setHeroApprovalSigned] = useState(false);
-  const [demoChatSent, setDemoChatSent] = useState(false);
   const [demoChatInput, setDemoChatInput] = useState('');
   const [demoChatHistory, setDemoChatHistory] = useState([
     { sender: 'client', text: 'Hey, I just reviewed the draft logo. Can we try a warmer color palette?' }
@@ -35,7 +34,6 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
     if (!demoChatInput.trim()) return;
     setDemoChatHistory(prev => [...prev, { sender: 'agency', text: demoChatInput.trim() }]);
     setDemoChatInput('');
-    setDemoChatSent(true);
   };
 
   const handleScrollTo = (id: string) => {
@@ -77,7 +75,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
         <div className="lp-container lp-hero-grid">
           <div className="lp-hero-text">
             <div className="lp-badge">
-              <Sparkles style={{ width: '12px', height: '12px', marginRight: '4px' }} />
+              <Sparkles style={{ width: '12px', height: '12px', marginRight: '4px', color: '#a855f7' }} />
               Next-Gen Agency Workspace
             </div>
             <h1>Keep Every Client Project Sorted</h1>
@@ -86,23 +84,23 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
             </p>
             
             <div className="lp-hero-ctas">
-              <button className="lp-btn lp-btn-accent" style={{ padding: '14px 28px', fontSize: '15px' }} onClick={onEnterPortal}>
+              <button className="lp-btn lp-btn-accent" style={{ padding: '12px 24px', fontSize: '15px' }} onClick={onEnterPortal}>
                 Start Free Trial <ArrowRight style={{ width: '16px', height: '16px' }} />
               </button>
-              <button className="lp-btn lp-btn-secondary" style={{ padding: '14px 28px', fontSize: '15px' }} onClick={() => alert("Book Demo simulation triggered! Check the Live Portal Demo to explore features immediately.")}>
+              <button className="lp-btn lp-btn-secondary" style={{ padding: '12px 24px', fontSize: '15px' }} onClick={() => alert("Book Demo simulation triggered! Check the Live Portal Demo to explore features immediately.")}>
                 Book Demo
               </button>
             </div>
 
             <div className="lp-hero-benefits-row">
               <div className="lp-hero-benefit-item">
-                <Check /> <span>No credit card required</span>
+                <Check style={{ color: '#10b981', width: '14px', height: '14px', strokeWidth: 3 }} /> <span>No credit card required</span>
               </div>
               <div className="lp-hero-benefit-item">
-                <Check /> <span>Free 14-day trial</span>
+                <Check style={{ color: '#10b981', width: '14px', height: '14px', strokeWidth: 3 }} /> <span>Free 14-day trial</span>
               </div>
               <div className="lp-hero-benefit-item">
-                <Check /> <span>Invite unlimited clients</span>
+                <Check style={{ color: '#10b981', width: '14px', height: '14px', strokeWidth: 3 }} /> <span>Invite unlimited clients</span>
               </div>
             </div>
           </div>
@@ -110,6 +108,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
           {/* Interactive Hero Visual */}
           <div className="lp-hero-visual">
             <div className="lp-mockup">
+              {/* Browser Header Bar */}
               <div className="lp-mockup-header">
                 <div className="lp-mockup-dot red"></div>
                 <div className="lp-mockup-dot yellow"></div>
@@ -119,76 +118,158 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
                 </div>
               </div>
               
-              <div className="lp-mockup-body">
-                {/* Visual Section: Milestone & Approvals */}
-                <div className="lp-mockup-row">
-                  <div className="lp-mockup-card">
-                    <div className="lp-mockup-title">Active Approvals</div>
-                    <div className="lp-mockup-project">
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                        <span style={{ fontSize: '13px', fontWeight: 600 }}>Brand Board Revisions V2.pdf</span>
-                        <span style={{ fontSize: '11px', color: 'var(--lp-text-secondary)' }}>Pending client signature</span>
-                      </div>
-                      
-                      {heroApprovalSigned ? (
-                        <span style={{ fontSize: '12px', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          ✓ Approved
-                        </span>
-                      ) : (
-                        <button 
-                          className="lp-btn lp-btn-accent" 
-                          style={{ padding: '4px 10px', fontSize: '11px', borderRadius: '4px' }}
-                          onClick={() => setHeroApprovalSigned(true)}
-                        >
-                          Sign to Approve
-                        </button>
-                      )}
-                    </div>
+              {/* App Mockup Layout (Sidebar + Main Panel) */}
+              <div style={{ display: 'flex', minHeight: '380px', backgroundColor: '#f9fafb', borderTop: '1px solid rgba(0,0,0,0.02)' }}>
+                {/* Sidebar Mockup */}
+                <div style={{ 
+                  width: '56px', 
+                  backgroundColor: '#111827', 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center', 
+                  padding: '16px 0', 
+                  gap: '20px',
+                  borderRight: '1px solid rgba(255,255,255,0.05)',
+                  flexShrink: 0
+                }}>
+                  <div style={{ width: '28px', height: '28px', borderRadius: '6px', backgroundColor: '#ffffff', color: '#111827', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '13px' }}>S</div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6366f1' }}>
+                    <LayoutDashboard style={{ width: '13px', height: '13px' }} />
                   </div>
-
-                  <div className="lp-mockup-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '6px' }}>
-                    <div className="lp-mockup-title" style={{ width: '100%' }}>Progress</div>
-                    <div className="lp-mockup-avatar" style={{ width: '38px', height: '38px', fontSize: '14px' }}>75%</div>
-                    <span style={{ fontSize: '11px', color: 'var(--lp-text-secondary)', fontWeight: 500 }}>3 of 4 stages complete</span>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af' }}>
+                    <FileText style={{ width: '13px', height: '13px' }} />
+                  </div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af' }}>
+                    <MessageSquare style={{ width: '13px', height: '13px' }} />
+                  </div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af' }}>
+                    <Users style={{ width: '13px', height: '13px' }} />
                   </div>
                 </div>
 
-                {/* Visual Section: Live Mock Chat */}
-                <div className="lp-mockup-card">
-                  <div className="lp-mockup-title">Real-time Feedback Stream</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '110px', overflowY: 'auto', marginBottom: '10px', paddingRight: '4px' }}>
-                    {demoChatHistory.map((chat, idx) => (
-                      <div key={idx} style={{ 
-                        alignSelf: chat.sender === 'client' ? 'flex-start' : 'flex-end',
-                        backgroundColor: chat.sender === 'client' ? '#f3f4f6' : '#7c3aed',
-                        color: chat.sender === 'client' ? 'var(--lp-text-primary)' : '#fff',
-                        padding: '6px 10px',
-                        borderRadius: '6px',
-                        fontSize: '12px',
-                        maxWidth: '85%'
-                      }}>
-                        {chat.text}
-                      </div>
-                    ))}
+                {/* Main Panel Mockup */}
+                <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', minWidth: 0 }}>
+                  {/* Top Bar inside mockup */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e5e7eb', paddingBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Acme Rebrand Project</span>
+                      <span style={{ fontSize: '9px', padding: '2px 6px', borderRadius: '10px', backgroundColor: '#e0f2fe', color: '#0369a1', fontWeight: 600, flexShrink: 0 }}>Active</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                      <span style={{ fontSize: '10px', color: '#4b5563', fontWeight: 500 }}>Sarah (Agency)</span>
+                      <div style={{ width: '18px', height: '18px', borderRadius: '50%', backgroundColor: '#10b981', color: '#ffffff', fontSize: '9px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>SJ</div>
+                    </div>
                   </div>
 
-                  <form onSubmit={handleSendDemoChat} style={{ display: 'flex', gap: '6px' }}>
-                    <input 
-                      type="text" 
-                      placeholder="Type feedback as Agency (e.g. Added warmer palettes!)..."
-                      style={{ flex: 1, padding: '6px 10px', fontSize: '12px', border: '1px solid #e5e7eb', borderRadius: '4px', outline: 'none' }}
-                      value={demoChatInput}
-                      onChange={(e) => setDemoChatInput(e.target.value)}
-                    />
-                    <button type="submit" style={{ background: 'none', border: 'none', color: '#7c3aed', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                      <Send style={{ width: '14px', height: '14px' }} />
-                    </button>
-                  </form>
-                  {demoChatSent && (
-                    <div style={{ fontSize: '10px', color: 'var(--lp-text-muted)', marginTop: '4px', fontStyle: 'italic' }}>
-                      Tip: Explore the live portal demo to see automated agent replies!
+                  {/* Dashboard body grid in mockup */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '12px' }}>
+                    {/* Left Column in mockup */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      
+                      {/* Active Approvals Mockup Card */}
+                      <div className="lp-mockup-card" style={{ padding: '12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                          <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px' }}>Active Approval</span>
+                          <span style={{ fontSize: '9px', padding: '1px 5px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#b91c1c', fontWeight: 600 }}>Needs Review</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px', backgroundColor: '#f9fafb', borderRadius: '6px', border: '1px solid #f3f4f6', marginBottom: '8px' }}>
+                          <div style={{ width: '24px', height: '24px', borderRadius: '4px', backgroundColor: '#fee2e2', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444', fontWeight: 'bold', fontSize: '10px', flexShrink: 0 }}>PDF</div>
+                          <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                            <span style={{ fontSize: '11px', fontWeight: 600, color: '#111827', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Brand_Board_V2.pdf</span>
+                            <span style={{ fontSize: '9px', color: '#6b7280' }}>Submitted 2h ago by Sarah</span>
+                          </div>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                          <button style={{ padding: '4px 8px', fontSize: '10px', border: '1px solid #d1d5db', borderRadius: '4px', backgroundColor: '#ffffff', color: '#374151', cursor: 'pointer' }} onClick={() => alert("Simulated change request sent to agency!")}>Request Revisions</button>
+                          {heroApprovalSigned ? (
+                            <span style={{ fontSize: '10px', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '3px', padding: '4px' }}>
+                              <Check style={{ color: '#10b981', width: '12px', height: '12px', strokeWidth: 3 }} /> Approved
+                            </span>
+                          ) : (
+                            <button 
+                              style={{ padding: '4px 8px', fontSize: '10px', border: 'none', borderRadius: '4px', backgroundColor: '#10b981', color: '#ffffff', fontWeight: 600, cursor: 'pointer' }}
+                              onClick={() => setHeroApprovalSigned(true)}
+                            >
+                              Sign & Approve
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Timeline / Stepper Card */}
+                      <div className="lp-mockup-card" style={{ padding: '12px' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px', display: 'block', marginBottom: '10px' }}>Project Phase</span>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#10b981', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '7px' }}>✓</div>
+                            <span style={{ fontSize: '11px', color: '#111827', textDecoration: 'line-through' }}>Phase 1: Briefing & Strategy</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#6366f1', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', fontSize: '8px', fontWeight: 'bold' }}>•</div>
+                            <span style={{ fontSize: '11px', color: '#111827', fontWeight: 600 }}>Phase 2: Brand Concepts (Active)</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#e5e7eb' }}></div>
+                            <span style={{ fontSize: '11px', color: '#9ca3af' }}>Phase 3: Feedback & Revisions</span>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
-                  )}
+
+                    {/* Right Column in mockup */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      
+                      {/* Live Feedback Streams Card */}
+                      <div className="lp-mockup-card" style={{ padding: '12px', display: 'flex', flexDirection: 'column', height: '100%', minHeight: '190px' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px', display: 'block', marginBottom: '8px' }}>Live Feedback</span>
+                        
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '110px', overflowY: 'auto', marginBottom: '8px', paddingRight: '2px' }}>
+                          {demoChatHistory.map((chat, idx) => (
+                            <div key={idx} style={{ 
+                              alignSelf: chat.sender === 'client' ? 'flex-start' : 'flex-end',
+                              backgroundColor: chat.sender === 'client' ? '#f3f4f6' : '#6366f1',
+                              color: chat.sender === 'client' ? '#111827' : '#ffffff',
+                              padding: '5px 8px',
+                              borderRadius: '6px',
+                              fontSize: '10px',
+                              maxWidth: '90%',
+                              boxShadow: '0 1px 2px rgba(0,0,0,0.02)'
+                            }}>
+                              {chat.text}
+                            </div>
+                          ))}
+                        </div>
+
+                        <form onSubmit={handleSendDemoChat} style={{ display: 'flex', gap: '4px', borderTop: '1px solid #f3f4f6', paddingTop: '8px' }}>
+                          <input 
+                            type="text" 
+                            placeholder="Send feedback..."
+                            style={{ flex: 1, padding: '4px 8px', fontSize: '10px', border: '1px solid #e5e7eb', borderRadius: '4px', outline: 'none', backgroundColor: '#ffffff' }}
+                            value={demoChatInput}
+                            onChange={(e) => setDemoChatInput(e.target.value)}
+                          />
+                          <button type="submit" style={{ background: 'none', border: 'none', color: '#6366f1', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '0 4px' }}>
+                            <Send style={{ width: '12px', height: '12px' }} />
+                          </button>
+                        </form>
+                      </div>
+
+                      {/* Quick Asset List Card */}
+                      <div className="lp-mockup-card" style={{ padding: '12px' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#6b7280', letterSpacing: '0.5px', display: 'block', marginBottom: '6px' }}>Shared Assets</span>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                          <span style={{ fontSize: '9px', padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fff', border: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '3px', fontWeight: 550, color: '#374151' }}>
+                            <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>AI</span> logo_final.ai
+                          </span>
+                          <span style={{ fontSize: '9px', padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fff', border: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '3px', fontWeight: 550, color: '#374151' }}>
+                            <span style={{ color: '#06b6d4', fontWeight: 'bold' }}>PNG</span> banner.png
+                          </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -200,7 +281,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
       <section className="lp-section lp-section-alt">
         <div className="lp-container">
           <div className="lp-section-header">
-            <div className="lp-badge" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444' }}>The Problem</div>
+            <div className="lp-badge">The Problem</div>
             <h2>Creative work gets messy fast</h2>
             <p>
               Managing client assets, feedback cycles, and milestones shouldn't require stitching together five different tools.
@@ -210,7 +291,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
           <div className="lp-problem-grid">
             <div className="lp-problem-card">
               <div className="lp-problem-icon-wrapper">
-                <MessageSquare style={{ width: '22px', height: '22px' }} />
+                <MessageSquare style={{ width: '22px', height: '22px', color: '#3b82f6' }} />
               </div>
               <h3>Feedback scattered everywhere</h3>
               <p>
@@ -220,7 +301,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-problem-card">
               <div className="lp-problem-icon-wrapper">
-                <Clock style={{ width: '22px', height: '22px' }} />
+                <Clock style={{ width: '22px', height: '22px', color: '#f59e0b' }} />
               </div>
               <h3>Delayed approvals</h3>
               <p>
@@ -230,7 +311,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-problem-card">
               <div className="lp-problem-icon-wrapper">
-                <FolderOpen style={{ width: '22px', height: '22px' }} />
+                <FolderOpen style={{ width: '22px', height: '22px', color: '#06b6d4' }} />
               </div>
               <h3>Missing files and assets</h3>
               <p>
@@ -240,7 +321,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-problem-card">
               <div className="lp-problem-icon-wrapper">
-                <AlertCircle style={{ width: '22px', height: '22px' }} />
+                <AlertCircle style={{ width: '22px', height: '22px', color: '#ef4444' }} />
               </div>
               <h3>Constant status updates</h3>
               <p>
@@ -265,7 +346,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
           <div className="lp-features-grid">
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <LayoutDashboard style={{ width: '22px', height: '22px' }} />
+                <LayoutDashboard style={{ width: '22px', height: '22px', color: '#6366f1' }} />
               </div>
               <h3>Dashboard</h3>
               <p>
@@ -275,7 +356,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <TrendingUp style={{ width: '22px', height: '22px' }} />
+                <TrendingUp style={{ width: '22px', height: '22px', color: '#10b981' }} />
               </div>
               <h3>Projects</h3>
               <p>
@@ -285,7 +366,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <Users style={{ width: '22px', height: '22px' }} />
+                <Users style={{ width: '22px', height: '22px', color: '#ec4899' }} />
               </div>
               <h3>Clients</h3>
               <p>
@@ -295,7 +376,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <FileText style={{ width: '22px', height: '22px' }} />
+                <FileText style={{ width: '22px', height: '22px', color: '#f97316' }} />
               </div>
               <h3>Deliverables & Approvals</h3>
               <p>
@@ -305,7 +386,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <MessageSquare style={{ width: '22px', height: '22px' }} />
+                <MessageSquare style={{ width: '22px', height: '22px', color: '#3b82f6' }} />
               </div>
               <h3>Feedback & Comments</h3>
               <p>
@@ -315,7 +396,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <FolderOpen style={{ width: '22px', height: '22px' }} />
+                <FolderOpen style={{ width: '22px', height: '22px', color: '#06b6d4' }} />
               </div>
               <h3>Asset Requests</h3>
               <p>
@@ -325,7 +406,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <Clock style={{ width: '22px', height: '22px' }} />
+                <Clock style={{ width: '22px', height: '22px', color: '#8b5cf6' }} />
               </div>
               <h3>Activity Timeline</h3>
               <p>
@@ -335,7 +416,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <Bell style={{ width: '22px', height: '22px' }} />
+                <Bell style={{ width: '22px', height: '22px', color: '#f43f5e' }} />
               </div>
               <h3>Notifications</h3>
               <p>
@@ -345,7 +426,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <Users style={{ width: '22px', height: '22px' }} />
+                <Users style={{ width: '22px', height: '22px', color: '#14b8a6' }} />
               </div>
               <h3>Team Management</h3>
               <p>
@@ -355,7 +436,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <ShieldCheck style={{ width: '22px', height: '22px' }} />
+                <ShieldCheck style={{ width: '22px', height: '22px', color: '#a855f7' }} />
               </div>
               <h3>Roles & Permissions</h3>
               <p>
@@ -450,23 +531,23 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
           <div className="lp-benefits-grid">
             <div className="lp-benefit-card">
-              <Check style={{ color: '#10b981' }} />
+              <Check style={{ color: '#10b981', width: '20px', height: '20px' }} />
               <h3>Faster approvals</h3>
             </div>
             <div className="lp-benefit-card">
-              <Check style={{ color: '#10b981' }} />
+              <Check style={{ color: '#10b981', width: '20px', height: '20px' }} />
               <h3>Fewer client emails</h3>
             </div>
             <div className="lp-benefit-card">
-              <Check style={{ color: '#10b981' }} />
+              <Check style={{ color: '#10b981', width: '20px', height: '20px' }} />
               <h3>Better visibility</h3>
             </div>
             <div className="lp-benefit-card">
-              <Check style={{ color: '#10b981' }} />
+              <Check style={{ color: '#10b981', width: '20px', height: '20px' }} />
               <h3>Organized chat</h3>
             </div>
             <div className="lp-benefit-card">
-              <Check style={{ color: '#10b981' }} />
+              <Check style={{ color: '#10b981', width: '20px', height: '20px' }} />
               <h3>Premium client UX</h3>
             </div>
           </div>
@@ -487,7 +568,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
           <div className="lp-testimonials-grid">
             <div className="lp-testimonial-card">
               <div style={{ display: 'flex', gap: '2px', color: '#fbbf24', marginBottom: '8px' }}>
-                {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24' }} />)}
+                {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24', color: '#fbbf24' }} />)}
               </div>
               <p className="lp-testimonial-text">
                 "Sortd completely replaced our messy email chains and PDF revision booklets. We now get approvals on design boards in hours, not weeks."
@@ -503,7 +584,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-testimonial-card">
               <div style={{ display: 'flex', gap: '2px', color: '#fbbf24', marginBottom: '8px' }}>
-                {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24' }} />)}
+                {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24', color: '#fbbf24' }} />)}
               </div>
               <p className="lp-testimonial-text">
                 "As a client, I love having one portal to track our brand rollout. I can sign off on vector assets, review tasks, and message my agent in a few taps."
@@ -519,7 +600,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
 
             <div className="lp-testimonial-card">
               <div style={{ display: 'flex', gap: '2px', color: '#fbbf24', marginBottom: '8px' }}>
-                {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24' }} />)}
+                {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24', color: '#fbbf24' }} />)}
               </div>
               <p className="lp-testimonial-text">
                 "The asset vault and digital signature features saved our project timeline. Collecting brief specifications and credentials has never been this secure."
@@ -557,10 +638,10 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
               </div>
               
               <ul className="lp-pricing-features">
-                <li className="lp-pricing-feature-item"><Check /> Up to 3 active projects</li>
-                <li className="lp-pricing-feature-item"><Check /> 5GB secure storage</li>
-                <li className="lp-pricing-feature-item"><Check /> Unlimited client invites</li>
-                <li className="lp-pricing-feature-item"><Check /> Basic task checklist</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Up to 3 active projects</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> 5GB secure storage</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Unlimited client invites</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Basic task checklist</li>
               </ul>
               
               <button className="lp-btn lp-btn-secondary" style={{ width: '100%' }} onClick={onEnterPortal}>
@@ -578,12 +659,12 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
               </div>
               
               <ul className="lp-pricing-features">
-                <li className="lp-pricing-feature-item"><Check /> Unlimited active projects</li>
-                <li className="lp-pricing-feature-item"><Check /> 50GB secure storage</li>
-                <li className="lp-pricing-feature-item"><Check /> Unlimited client invites</li>
-                <li className="lp-pricing-feature-item"><Check /> Custom milestone steppers</li>
-                <li className="lp-pricing-feature-item"><Check /> Interactive E-Signatures</li>
-                <li className="lp-pricing-feature-item"><Check /> Simulated chat templates</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Unlimited active projects</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> 50GB secure storage</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Unlimited client invites</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Custom milestone steppers</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Interactive E-Signatures</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Simulated chat templates</li>
               </ul>
               
               <button className="lp-btn lp-btn-accent" style={{ width: '100%' }} onClick={onEnterPortal}>
@@ -600,11 +681,11 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
               </div>
               
               <ul className="lp-pricing-features">
-                <li className="lp-pricing-feature-item"><Check /> Unlimited active projects</li>
-                <li className="lp-pricing-feature-item"><Check /> 1TB+ dedicated storage</li>
-                <li className="lp-pricing-feature-item"><Check /> Dedicated support advisor</li>
-                <li className="lp-pricing-feature-item"><Check /> Branded custom domain</li>
-                <li className="lp-pricing-feature-item"><Check /> Single Sign-On (SSO)</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Unlimited active projects</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> 1TB+ dedicated storage</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Dedicated support advisor</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Branded custom domain</li>
+                <li className="lp-pricing-feature-item"><Check style={{ color: '#10b981', width: '16px', height: '16px' }} /> Single Sign-On (SSO)</li>
               </ul>
               
               <button className="lp-btn lp-btn-secondary" style={{ width: '100%' }} onClick={() => alert("Enterprise contact inquiry simulated! Click the Growth or Starter trial to view the portal workspace.")}>
