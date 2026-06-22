@@ -80,7 +80,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
             </div>
             <h1>Keep Every Client Project Sorted</h1>
             <p>
-              Sortd helps creative agencies manage client communication, approvals, feedback, revisions, and project progress from a single workspace.
+              Sorted helps creative agencies manage client communication, approvals, feedback, revisions, and project progress from a single workspace.
             </p>
             
             <div className="lp-hero-ctas">
@@ -312,7 +312,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
             <div className="lp-badge">Features Included</div>
             <h2>Everything you need to stay sorted</h2>
             <p>
-              Sortd provides ten integrated features tailored to creative collaboration, design feedback, and transaction milestone transparency.
+              Sorted provides ten integrated features tailored to creative collaboration, design feedback, and transaction milestone transparency.
             </p>
           </div>
 
@@ -424,10 +424,10 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
       <section id="how-it-works" className="lp-section lp-section-alt">
         <div className="lp-container">
           <div className="lp-section-header">
-            <div className="lp-badge">How Sortd Works</div>
+            <div className="lp-badge">How Sorted Works</div>
             <h2>A seamless collaboration flow</h2>
             <p>
-              How Sortd connects agencies and clients together from start to finish.
+              How Sorted connects agencies and clients together from start to finish.
             </p>
           </div>
 
@@ -498,7 +498,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
             <div className="lp-badge">Agency Benefits</div>
             <h2>Engineered for creative agencies</h2>
             <p>
-              Sortd removes administration friction, so your team can focus on delivering high-fidelity design work.
+              Sorted removes administration friction, so your team can focus on delivering high-fidelity design work.
             </p>
           </div>
 
@@ -534,7 +534,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
             <div className="lp-badge">Social Proof</div>
             <h2>Trusted by creative leaders</h2>
             <p>
-              Here is what agencies and clients say about using Sortd to manage their creative deliverables.
+              Here is what agencies and clients say about using Sorted to manage their creative deliverables.
             </p>
           </div>
 
@@ -544,7 +544,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
                 {[...Array(5)].map((_, i) => <Star key={i} style={{ width: '16px', height: '16px', fill: '#fbbf24', color: '#fbbf24' }} />)}
               </div>
               <p className="lp-testimonial-text">
-                "Sortd completely replaced our messy email chains and PDF revision booklets. We now get approvals on design boards in hours, not weeks."
+                "Sorted completely replaced our messy email chains and PDF revision booklets. We now get approvals on design boards in hours, not weeks."
               </p>
               <div className="lp-testimonial-author">
                 <div className="lp-testimonial-author-avatar">SJ</div>

@@ -38,7 +38,7 @@ export const PortalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [activities, setActivities] = useState<ActivityLog[]>([
     {
       id: 'a1',
-      desc: 'Project "Sortd Brand Redesign" initialized by agency.',
+      desc: 'Project "Sorted Brand Redesign" initialized by agency.',
       time: '10 mins ago',
       type: 'agency',
     },
