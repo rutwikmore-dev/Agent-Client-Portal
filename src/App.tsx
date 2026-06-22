@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { usePortal } from './context/PortalContext';
-import { DashboardView } from './views/DashboardView';
-import { LandingView } from './views/LandingView';
+import { DashboardView } from './pages/DashboardPage';
+import { LandingView } from './pages/LandingPage';
 import { 
   LayoutDashboard, 
   Bell,
