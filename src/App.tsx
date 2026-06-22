@@ -1,59 +1,16 @@
 import React, { useState } from 'react';
 import { usePortal } from './context/PortalContext';
 import { DashboardView } from './views/DashboardView';
-import { PipelineView } from './views/PipelineView';
-import { MessagesView } from './views/MessagesView';
-import { DocumentsView } from './views/DocumentsView';
-import { TasksView } from './views/TasksView';
 import { LandingView } from './views/LandingView';
 import { 
   LayoutDashboard, 
-  TrendingUp, 
-  MessageSquare, 
-  FolderOpen, 
-  CheckSquare, 
   Bell,
   ArrowLeft
 } from 'lucide-react';
 
 const App: React.FC = () => {
-  const { role, setRole, activeTab, setActiveTab } = usePortal();
+  const { role, setRole } = usePortal();
   const [viewMode, setViewMode] = useState<'landing' | 'portal'>('landing');
-
-  // Handle views rendering inside portal
-  const renderActiveView = () => {
-    switch (activeTab) {
-      case 'dashboard':
-        return <DashboardView />;
-      case 'pipeline':
-        return <PipelineView />;
-      case 'messages':
-        return <MessagesView />;
-      case 'documents':
-        return <DocumentsView />;
-      case 'tasks':
-        return <TasksView />;
-      default:
-        return <DashboardView />;
-    }
-  };
-
-  const getPageTitle = () => {
-    switch (activeTab) {
-      case 'dashboard':
-        return { title: 'Overview Dashboard', subtitle: 'Real-time overview of deal status and next steps.' };
-      case 'pipeline':
-        return { title: 'Transaction Milestones', subtitle: 'Track milestones and stage criteria for your deal.' };
-      case 'messages':
-        return { title: 'Messaging Center', subtitle: 'Secure, encrypted collaboration with your advisor.' };
-      case 'documents':
-        return { title: 'Secure Document Vault', subtitle: 'Upload files, check statuses, and sign contracts.' };
-      case 'tasks':
-        return { title: 'Collaboration Task Board', subtitle: 'Checklist of actions to keep things moving.' };
-    }
-  };
-
-  const pageMeta = getPageTitle();
 
   if (viewMode === 'landing') {
     return <LandingView onEnterPortal={() => setViewMode('portal')} />;
@@ -70,44 +27,9 @@ const App: React.FC = () => {
           </div>
 
           <nav className="nav-links">
-            <button 
-              className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
-              onClick={() => setActiveTab('dashboard')}
-            >
+            <button className="nav-item active">
               <LayoutDashboard />
-              <span>Dashboard</span>
-            </button>
-
-            <button 
-              className={`nav-item ${activeTab === 'pipeline' ? 'active' : ''}`}
-              onClick={() => setActiveTab('pipeline')}
-            >
-              <TrendingUp />
-              <span>Milestones</span>
-            </button>
-
-            <button 
-              className={`nav-item ${activeTab === 'messages' ? 'active' : ''}`}
-              onClick={() => setActiveTab('messages')}
-            >
-              <MessageSquare />
-              <span>Messages</span>
-            </button>
-
-            <button 
-              className={`nav-item ${activeTab === 'documents' ? 'active' : ''}`}
-              onClick={() => setActiveTab('documents')}
-            >
-              <FolderOpen />
-              <span>Document Vault</span>
-            </button>
-
-            <button 
-              className={`nav-item ${activeTab === 'tasks' ? 'active' : ''}`}
-              onClick={() => setActiveTab('tasks')}
-            >
-              <CheckSquare />
-              <span>Tasks Board</span>
+              <span>Workspace Dashboard</span>
             </button>
 
             {/* Back to Home Navigation */}
@@ -134,8 +56,8 @@ const App: React.FC = () => {
         {/* Header section */}
         <header className="header">
           <div className="header-title-section">
-            <h1>{pageMeta.title}</h1>
-            <p>{pageMeta.subtitle}</p>
+            <h1>Workspace Portal</h1>
+            <p>Track project timelines, workflow swimlanes, and assets.</p>
           </div>
 
           <div className="header-controls">
@@ -180,7 +102,7 @@ const App: React.FC = () => {
 
         {/* Dynamic Inner View */}
         <section style={{ animation: 'fade-in 0.3s ease-out' }}>
-          {renderActiveView()}
+          <DashboardView />
         </section>
       </main>
     </div>

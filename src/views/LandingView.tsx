@@ -10,7 +10,11 @@ import {
   ArrowRight,
   Send,
   Star,
-  Users
+  Users,
+  LayoutDashboard,
+  FileText,
+  Bell,
+  ShieldCheck
 } from 'lucide-react';
 
 interface LandingViewProps {
@@ -251,51 +255,21 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
       <section id="features" className="lp-section">
         <div className="lp-container">
           <div className="lp-section-header">
-            <div className="lp-badge">Platform Overview</div>
-            <h2>Everything you need in one workspace</h2>
+            <div className="lp-badge">FEATURES WE INCLUDED</div>
+            <h2>Everything you need to stay sorted</h2>
             <p>
-              Sortd provides a modern toolkit tailored to creative collaboration, design feedback, and transaction transparent checkpoints.
+              Sortd provides ten integrated features tailored to creative collaboration, design feedback, and transaction milestone transparency.
             </p>
           </div>
 
           <div className="lp-features-grid">
             <div className="lp-feature-card">
               <div className="lp-feature-icon-wrapper">
-                <Users style={{ width: '22px', height: '22px' }} />
+                <LayoutDashboard style={{ width: '22px', height: '22px' }} />
               </div>
-              <h3>Client Portal</h3>
+              <h3>Dashboard</h3>
               <p>
-                Give clients a branded, unified workspace to view active deal files, sign-offs, and project progression.
-              </p>
-            </div>
-
-            <div className="lp-feature-card">
-              <div className="lp-feature-icon-wrapper">
-                <Check style={{ width: '22px', height: '22px' }} />
-              </div>
-              <h3>Approval Workflows</h3>
-              <p>
-                Verify deliverables with custom milestones. Clients can sign-off or request changes with a single click.
-              </p>
-            </div>
-
-            <div className="lp-feature-card">
-              <div className="lp-feature-icon-wrapper">
-                <MessageSquare style={{ width: '22px', height: '22px' }} />
-              </div>
-              <h3>Feedback Tracking</h3>
-              <p>
-                Threaded replies, document comments, and quick templates keep all instructions and revisions organized.
-              </p>
-            </div>
-
-            <div className="lp-feature-card">
-              <div className="lp-feature-icon-wrapper">
-                <FolderOpen style={{ width: '22px', height: '22px' }} />
-              </div>
-              <h3>Asset Collection</h3>
-              <p>
-                Collect briefs, branding vector assets, and statements efficiently using secure vault guidelines.
+                Overview of projects, pending approvals, tasks, and recent activity.
               </p>
             </div>
 
@@ -303,9 +277,49 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
               <div className="lp-feature-icon-wrapper">
                 <TrendingUp style={{ width: '22px', height: '22px' }} />
               </div>
-              <h3>Project Timeline</h3>
+              <h3>Projects</h3>
               <p>
-                Progress bars and visual steppers show clients active project milestones in real-time, reducing status emails.
+                Create and manage projects. Track status, due dates and progress.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <Users style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Clients</h3>
+              <p>
+                Manage client details and invite them to projects with client login access.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <FileText style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Deliverables & Approvals</h3>
+              <p>
+                Share deliverables via links. Clients can approve or request changes.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <MessageSquare style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Feedback & Comments</h3>
+              <p>
+                Centralized feedback and comments with thread and resolutions.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <FolderOpen style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Asset Requests</h3>
+              <p>
+                Request files, content and information. Track pending and received items.
               </p>
             </div>
 
@@ -313,9 +327,39 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
               <div className="lp-feature-icon-wrapper">
                 <Clock style={{ width: '22px', height: '22px' }} />
               </div>
-              <h3>Activity History</h3>
+              <h3>Activity Timeline</h3>
               <p>
-                View every single milestone edit, message transaction, document e-signature, and log entry in one feed.
+                Track all actions, updates, approvals and comments in one place.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <Bell style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Notifications</h3>
+              <p>
+                Email notifications for approvals, feedback, asset requests and updates.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <Users style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Team Management</h3>
+              <p>
+                Add team members and manage roles within your creative agency.
+              </p>
+            </div>
+
+            <div className="lp-feature-card">
+              <div className="lp-feature-icon-wrapper">
+                <ShieldCheck style={{ width: '22px', height: '22px' }} />
+              </div>
+              <h3>Roles & Permissions</h3>
+              <p>
+                Secure access for agency members and clients with role-based permissions.
               </p>
             </div>
           </div>
@@ -326,43 +370,67 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
       <section id="how-it-works" className="lp-section lp-section-alt">
         <div className="lp-container">
           <div className="lp-section-header">
-            <div className="lp-badge">Workflow</div>
-            <h2>Simple setup, quick results</h2>
+            <div className="lp-badge">HOW SORTD WORKS (FLOW)</div>
+            <h2>A seamless collaboration flow</h2>
             <p>
-              Get your first project up and running in minutes, and give your clients a premium collaboration experience.
+              How Sortd connects agencies and clients together from start to finish.
             </p>
           </div>
 
           <div className="lp-how-grid">
             <div className="lp-how-card">
               <div className="lp-how-card-num">01</div>
-              <h3>Create a project</h3>
+              <h3>Create Project</h3>
               <p>
-                Configure project timelines, set milestone stages, and upload initial scopes of work.
+                Agency creates a new project and adds client details.
               </p>
             </div>
 
             <div className="lp-how-card">
               <div className="lp-how-card-num">02</div>
-              <h3>Invite your client</h3>
+              <h3>Invite Client</h3>
               <p>
-                Send a secure portal invitation link. No complicated login or training needed for clients.
+                Client receives an invitation and gains access to the portal.
               </p>
             </div>
 
             <div className="lp-how-card">
               <div className="lp-how-card-num">03</div>
-              <h3>Collect assets & feedback</h3>
+              <h3>Collect Assets</h3>
               <p>
-                Clients drop statements and branding files directly into the vault, and comment on drafts.
+                Agency requests required content and assets. Client uploads and submits.
               </p>
             </div>
 
             <div className="lp-how-card">
               <div className="lp-how-card-num">04</div>
-              <h3>Deliver & get approvals</h3>
+              <h3>Share Deliverables</h3>
               <p>
-                Deliver final boards. Clients verify and sign electronically, moving the project to closing.
+                Agency shares work via links (Figma, Drive, Loom, etc.).
+              </p>
+            </div>
+
+            <div className="lp-how-card">
+              <div className="lp-how-card-num">05</div>
+              <h3>Feedback & Revisions</h3>
+              <p>
+                Client reviews, leaves feedback or requests changes.
+              </p>
+            </div>
+
+            <div className="lp-how-card">
+              <div className="lp-how-card-num">06</div>
+              <h3>Approve</h3>
+              <p>
+                Client approves the deliverable when satisfied.
+              </p>
+            </div>
+
+            <div className="lp-how-card">
+              <div className="lp-how-card-num">07</div>
+              <h3>Complete</h3>
+              <p>
+                Project marked complete and delivered. Archive or start new project.
               </p>
             </div>
           </div>
