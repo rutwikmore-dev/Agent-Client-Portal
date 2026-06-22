@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { usePortal } from './context/PortalContext';
 import { DashboardView } from './views/DashboardView';
 import { PipelineView } from './views/PipelineView';
 import { MessagesView } from './views/MessagesView';
 import { DocumentsView } from './views/DocumentsView';
 import { TasksView } from './views/TasksView';
+import { LandingView } from './views/LandingView';
 import { 
   LayoutDashboard, 
   TrendingUp, 
   MessageSquare, 
   FolderOpen, 
   CheckSquare, 
-  Bell 
+  Bell,
+  ArrowLeft
 } from 'lucide-react';
 
 const App: React.FC = () => {
   const { role, setRole, activeTab, setActiveTab } = usePortal();
+  const [viewMode, setViewMode] = useState<'landing' | 'portal'>('landing');
 
-  // Handle views rendering
+  // Handle views rendering inside portal
   const renderActiveView = () => {
     switch (activeTab) {
       case 'dashboard':
@@ -52,14 +55,18 @@ const App: React.FC = () => {
 
   const pageMeta = getPageTitle();
 
+  if (viewMode === 'landing') {
+    return <LandingView onEnterPortal={() => setViewMode('portal')} />;
+  }
+
   return (
     <div className="app-container">
       {/* Sidebar Navigation */}
       <aside className="sidebar">
         <div>
           <div className="logo-container">
-            <div className="logo-icon">A</div>
-            <span className="logo-text">Agentic</span>
+            <div className="logo-icon">S</div>
+            <span className="logo-text">Sorted</span>
           </div>
 
           <nav className="nav-links">
@@ -102,12 +109,22 @@ const App: React.FC = () => {
               <CheckSquare />
               <span>Tasks Board</span>
             </button>
+
+            {/* Back to Home Navigation */}
+            <button 
+              className="nav-item"
+              onClick={() => setViewMode('landing')}
+              style={{ borderTop: '1px solid var(--border-color)', marginTop: '24px', paddingTop: '16px', borderRadius: 0 }}
+            >
+              <ArrowLeft />
+              <span>Back to Home</span>
+            </button>
           </nav>
         </div>
 
         <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px' }}>
           <div style={{ fontSize: '11px', color: 'var(--text-muted)', textAlign: 'center' }}>
-            Agentic Collaboration Suite v1.0.0
+            Sorted Suite v1.0.0
           </div>
         </div>
       </aside>
