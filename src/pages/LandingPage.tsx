@@ -118,35 +118,8 @@ export const LandingView: React.FC<LandingViewProps> = ({ onEnterPortal }) => {
                 </div>
               </div>
               
-              {/* App Mockup Layout (Sidebar + Main Panel) */}
+              {/* App Mockup Layout (Main Panel) */}
               <div style={{ display: 'flex', minHeight: '380px', backgroundColor: '#f9fafb', borderTop: '1px solid rgba(0,0,0,0.02)' }}>
-                {/* Sidebar Mockup */}
-                <div style={{ 
-                  width: '56px', 
-                  backgroundColor: '#111827', 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center', 
-                  padding: '16px 0', 
-                  gap: '20px',
-                  borderRight: '1px solid rgba(255,255,255,0.05)',
-                  flexShrink: 0
-                }}>
-                  <div style={{ width: '28px', height: '28px', borderRadius: '6px', backgroundColor: '#ffffff', color: '#111827', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '13px' }}>S</div>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6366f1' }}>
-                    <LayoutDashboard style={{ width: '13px', height: '13px' }} />
-                  </div>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af' }}>
-                    <FileText style={{ width: '13px', height: '13px' }} />
-                  </div>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af' }}>
-                    <MessageSquare style={{ width: '13px', height: '13px' }} />
-                  </div>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af' }}>
-                    <Users style={{ width: '13px', height: '13px' }} />
-                  </div>
-                </div>
-
                 {/* Main Panel Mockup */}
                 <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', minWidth: 0 }}>
                   {/* Top Bar inside mockup */}
